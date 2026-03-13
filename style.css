@@ -1,364 +1,609 @@
-/* 
-=========================================================
-  AMBA GLASS COMPANY - PREMIUM UI/UX THEME
-  Elite CRO Strategy & Glassmorphism Design
-=========================================================
-*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* --- 1. Root Variables (Theme Engine) --- */
 :root {
-    /* Brand Colors - Deep trust-building professional tones */
-    --primary-color: #0c2b4e; 
-    --primary-light: #184882;
-    --accent-color: #0084ff;
-    
-    /* Glassmorphism Variables */
-    --glass-bg: rgba(255, 255, 255, 0.25);
-    --glass-border: rgba(255, 255, 255, 0.4);
-    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-    
-    /* Utility Colors */
-    --whatsapp-color: #25D366;
-    --whatsapp-glow: rgba(37, 211, 102, 0.4);
-    --text-main: #222b36;
-    --text-muted: #5e6c7d;
-    --pulse-glow: rgba(12, 43, 78, 0.4);
-    
-    /* Typography */
-    --font-heading: 'Outfit', 'Segoe UI', system-ui, sans-serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --primary-color: #00d2ff;
+    --secondary-color: #3a7bd5;
+    --text-main: #ffffff;
+    --text-muted: #e0e0e0;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* --- 2. Global Resets & Smooth Scroll --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-body);
-    color: var(--text-main);
-    /* Soft, premium gradient background suggesting light reflecting off glass */
-    background: linear-gradient(135deg, #f0f4f8, #e0e9f3, #ffffff);
-    background-attachment: fixed;
-    margin: 0;
-    padding: 0;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-}
-
-h1, h2, h3, h4 {
-    font-family: var(--font-heading);
-    font-weight: 700;
-}
-
-/* --- 3. Glassmorphism Utilities --- */
-.glass-panel {
-    background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    border-radius: 16px;
-}
-
-/* --- 4. Conversion Elements (CRO) --- */
-
-/* Trust Indicators */
-.trust-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 20px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--primary-color);
-    border-radius: 30px;
-    margin-bottom: 24px;
-}
-
-.trust-icon {
-    color: #05a643;
-    margin-right: 10px;
-    font-size: 1.1rem;
-}
-
-/* Primary Contact Element & Phone Highlight */
-.phone-highlight {
-    font-family: var(--font-heading);
-    font-size: 1.35rem;
-    font-weight: 800;
-    color: var(--primary-color);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    padding: 12px 24px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.6);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    border: 1px solid transparent;
-}
-
-.phone-highlight:hover {
-    background: white;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-    border-color: rgba(12, 43, 78, 0.1);
-    transform: translateY(-2px);
-}
-
-.phone-icon {
-    margin-right: 10px;
-    /* Gentle shake draws the eye to the phone but isn't annoying */
-    animation: gentle-shake 3.5s infinite ease-in-out;
-}
-
-/* Buttons */
-.btn-primary, .btn-secondary {
-    font-family: var(--font-heading);
-    padding: 14px 32px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: var(--text-main);
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
+}
+
+/* Dynamic background shapes for glassmorphism */
+body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    animation: float 10s infinite ease-in-out alternate;
+}
+
+body::before {
+    width: 450px;
+    height: 450px;
+    background: rgba(0, 210, 255, 0.15);
+    top: -100px;
+    left: -150px;
+}
+
+body::after {
+    width: 600px;
+    height: 600px;
+    background: rgba(58, 123, 213, 0.15);
+    bottom: -200px;
+    right: -150px;
+    animation-delay: -5s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(40px) scale(1.1); }
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
     overflow: hidden;
 }
 
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.btn-secondary {
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 2px solid var(--primary-color);
+a {
     color: var(--primary-color);
-    /* Inheriting glass feel for secondary buttons */
-    backdrop-filter: blur(5px);
-}
-
-.btn-glow:hover {
-    box-shadow: 0 10px 25px var(--pulse-glow);
-    transform: translateY(-3px);
-    background-color: var(--primary-light);
-}
-
-.btn-secondary:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-/* --- 5. Micro-Interactions & Hover States --- */
-
-/* Navigation Links */
-.glass-nav {
-    display: flex;
-    gap: 32px;
-    padding: 16px 40px;
-    position: sticky;
-    top: 24px;
-    z-index: 100;
-    margin: 24px auto;
-    max-width: fit-content;
-}
-
-.nav-link {
-    font-family: var(--font-heading);
     text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 600;
-    position: relative;
-    padding: 6px 0;
-    transition: color 0.3s ease;
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
-.nav-link::after {
+a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px var(--primary-color);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.8em;
+    font-weight: 700;
+    background: linear-gradient(90deg, #fff, var(--primary-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- Header & Navigation --- */
+.main-header {
+    background: rgba(15, 32, 39, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    background: #fff;
+    padding: 2px;
+}
+
+.main-header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ffffff, var(--primary-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+.main-header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.main-header nav ul li a {
+    color: var(--text-main);
+    padding: 10px 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.main-header nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    color: var(--primary-color);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+}
+
+.hero-section::before {
     content: '';
     position: absolute;
-    width: 0;
-    height: 3px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--accent-color);
-    transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    border-radius: 3px;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(15,32,39,0.8), rgba(44,83,100,0.8));
+    backdrop-filter: blur(3px);
 }
 
-.nav-link:hover {
-    color: var(--primary-light);
+.hero-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(20, 30, 40, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    padding: 60px 50px;
+    border-radius: 24px;
+    max-width: 900px;
+    animation: slideUp 1s ease-out;
 }
 
-.nav-link:hover::after {
-    width: 100%;
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Product Cards */
+.hero-section h2 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    background: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    letter-spacing: 0;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    color: #e0e0e0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff !important;
+    padding: 16px 40px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(0, 210, 255, 0.4);
+    border: none;
+}
+
+.cta-button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.6);
+}
+
+.cta-button.secondary {
+    background: rgba(255,255,255,0.05);
+    border: 2px solid var(--primary-color);
+    box-shadow: none;
+    backdrop-filter: blur(10px);
+}
+
+.cta-button.secondary:hover {
+    background: var(--primary-color);
+    box-shadow: 0 8px 25px rgba(0, 210, 255, 0.4);
+    color: #0f2027 !important;
+}
+
+/* --- Sections Common --- */
+section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Products Section --- */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 40px;
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .product-card {
-    padding: 24px;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
-    border-top: 1px solid rgba(255, 255, 255, 0.8);
-    border-left: 1px solid rgba(255, 255, 255, 0.6);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    transform: skewX(-25deg);
+    transition: all 0.7s ease;
+}
+
+.product-card:hover::before {
+    left: 150%;
 }
 
 .product-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 210, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(0, 210, 255, 0.4);
 }
 
-.product-info h3 {
-    margin: 16px 0 8px;
-    font-size: 1.4rem;
-}
-
-.product-info p {
-    color: var(--text-muted);
-    margin-bottom: 24px;
-}
-
-/* Image Hover Zoom */
-.product-image-wrapper {
+.product-card img {
     border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 24px;
-    position: relative;
-}
-
-.hover-zoom {
+    margin-bottom: 25px;
     width: 100%;
-    height: 100%;
+    height: 240px;
     object-fit: cover;
-    display: block;
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    transition: transform 0.5s ease;
 }
 
-.product-card:hover .hover-zoom {
-    transform: scale(1.1);
+.product-card:hover img {
+    transform: scale(1.05);
 }
 
-/* --- 6. Persistent Floating WhatsApp Button --- */
-.whatsapp-float {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    width: 65px;
-    height: 65px;
-    background-color: var(--whatsapp-color);
-    color: white;
+.product-card h3 {
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.product-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* --- Our Team Section --- */
+.our-team-section {
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+    margin: 40px 0;
+}
+
+.our-team-section .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.our-team-section .product-card {
+    width: 250px;
+    padding: 30px 20px;
+}
+
+.our-team-section .product-card img {
     border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    width: 150px;
+    height: 150px;
+    border: 4px solid var(--glass-border);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+}
+
+.our-team-section .product-card:hover img {
+    transform: scale(1.1) rotate(5deg);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.5);
+}
+
+.our-team-section h3 {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: #fff;
+    margin-top: 10px;
+}
+
+/* --- Projects Section --- */
+.projects-section p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 50px;
+}
+
+.project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.project-gallery img {
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.5s ease;
+    border: 1px solid var(--glass-border);
+    flex-basis: calc(50% - 40px);
+    max-width: 600px;
+    object-fit: cover;
+}
+
+.project-gallery img:hover {
+    transform: scale(1.03) translateY(-10px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.6), 0 0 25px rgba(0, 210, 255, 0.2);
+    z-index: 10;
+    border-color: rgba(0, 210, 255, 0.3);
+}
+
+/* --- Google Map --- */
+.map-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    box-shadow: 0 6px 20px var(--whatsapp-glow);
-    z-index: 1000;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin: 80px auto;
+    width: 100%;
+    padding: 0 20px;
 }
 
-.whatsapp-float:hover {
-    transform: scale(1.15) translateY(-8px) rotate(-5deg);
-    box-shadow: 0 10px 30px var(--whatsapp-glow);
+.map-container iframe {
+    max-width: 1100px;
+    width: 100%;
+    height: 450px;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border: 2px solid var(--glass-border);
+    filter: sepia(0.2) hue-rotate(180deg) invert(0.9); /* Dark mode map styling */
+    transition: filter 0.5s, border-color 0.3s;
 }
 
-/* --- 7. Animations & Flow --- */
-
-/* Pulse Button (Attention Grabbing) */
-.pulse-btn {
-    animation: continuous-pulse 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+.map-container iframe:hover {
+    filter: none;
+    border-color: var(--primary-color);
 }
 
-@keyframes continuous-pulse {
-    0% {
-        box-shadow: 0 0 0 0 var(--pulse-glow);
+/* --- Contact Section --- */
+.contact-owner-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    padding-bottom: 100px;
+}
+
+.owner-info, .company-details {
+    flex: 1;
+    min-width: 340px;
+    max-width: 550px;
+}
+
+.owner-details-card, .company-details {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    padding: 50px 40px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.4s ease;
+    height: 100%;
+}
+
+.owner-details-card:hover, .company-details:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 210, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.owner-details-card img {
+    border-radius: 50%;
+    margin-bottom: 25px;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 20px rgba(0, 210, 255, 0.3);
+    object-fit: cover;
+}
+
+.owner-details-card h3 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.owner-details-card p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.owner-details-card p em {
+    display: block;
+    margin-top: 15px;
+    font-size: 1.15rem;
+    color: var(--primary-color);
+}
+
+.company-details h2 {
+    margin-bottom: 35px;
+    font-size: 2.2rem;
+}
+
+.company-details p, .company-details address {
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.company-details a {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.3rem;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.company-details a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.company-details address strong {
+    color: #fff;
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+/* --- Media Queries --- */
+@media (max-width: 900px) {
+    .project-gallery img {
+        flex-basis: 100%;
     }
-    70% {
-        /* Pulse expands outwards */
-        box-shadow: 0 0 0 18px rgba(12, 43, 78, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(12, 43, 78, 0);
-    }
 }
 
-/* Specific pulse color override for WhatsApp */
-.whatsapp-float.pulse-btn {
-    animation: whatsapp-pulse 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes whatsapp-pulse {
-    0% { box-shadow: 0 0 0 0 var(--whatsapp-glow); }
-    70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-
-@keyframes gentle-shake {
-    0%, 100% { transform: rotate(0deg); }
-    15%, 45%, 75% { transform: rotate(-8deg); }
-    30%, 60% { transform: rotate(8deg); }
-    85% { transform: rotate(0deg); } /* Extra pause before repeating */
-}
-
-/* Fade-in & Slide-up (Applied to sections as they scroll into view) */
-@keyframes fade-in-up {
-    0% {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in-up {
-    animation: fade-in-up 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-    opacity: 0; /* Fallback hidden state */
-}
-
-/* Delays for staggered animations in grids */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-
-/* --- 8. Mobile Responsiveness --- */
 @media (max-width: 768px) {
-    .glass-nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-        padding: 20px;
-        width: calc(100% - 40px);
-        margin: 20px;
-        box-sizing: border-box;
-    }
-    
-    .hero-actions {
-        display: flex;
+    .main-header .container {
         flex-direction: column;
         gap: 20px;
-        align-items: center;
-        width: 100%;
     }
     
-    .phone-highlight, .btn-primary {
-        width: 100%;
+    .main-header nav ul {
+        flex-wrap: wrap;
         justify-content: center;
-        text-align: center;
-        box-sizing: border-box;
+    }
+
+    .hero-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content {
+        padding: 40px 25px;
     }
     
-    /* Reposition WhatsApp for exact thumb reachability on mobile */
-    .whatsapp-float {
-        bottom: 24px;
-        right: 24px;
-        width: 55px;
-        height: 55px;
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+
+    .contact-owner-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
     }
 }
+
+/* --- Scroll Animations --- */
+.animate {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: opacity, transform;
+}
+
+.animate.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0) scale(1);
+}
+
+.fade-up {
+    transform: translateY(50px);
+}
+
+.fade-in {
+    transform: translateY(0);
+    transition-duration: 1s;
+}
+
+.slide-left {
+    transform: translateX(-50px);
+}
+
+.slide-right {
+    transform: translateX(50px);
+}
+
+.scale-in {
+    transform: scale(0.9);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
